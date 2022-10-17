@@ -15,11 +15,12 @@ def TestOneInput(data):
     temp_file = tempfile.NamedTemporaryFile()
     temp_file.write(file_data)
     temp_file.flush()
-    temp_file.name = "test" + ".md"
-
+    #made it slower
+    #temp_file.name = "test" + ".md"
+    fd = temp_file.name
 
     try:
-        mistune.html(temp_file)
+        mistune.html(fd)
 
     except (NotImplementedError, AttributeError, DeprecationWarning):
         pass
