@@ -12,15 +12,12 @@ with atheris.instrument_imports():
 def TestOneInput(data):
     fdp = atheris.FuzzedDataProvider(data)
     file_data = fdp.ConsumeString(atheris.ALL_REMAINING)
-   
 
     try:
         mistune.html(file_data)
 
     except (NotImplementedError, AttributeError, DeprecationWarning):
         pass
-
-    temp_file.close()
 
 
 def main():
