@@ -11,16 +11,11 @@ with atheris.instrument_imports():
 
 def TestOneInput(data):
     fdp = atheris.FuzzedDataProvider(data)
-    file_data = fdp.ConsumeBytes(atheris.ALL_REMAINING)
-    temp_file = tempfile.NamedTemporaryFile()
-    temp_file.write(file_data)
-    temp_file.flush()
-    #made it slower
-    #temp_file.name = "test" + ".md"
-    fd = temp_file.name
+    file_data = fdp.ConsumeString(atheris.ALL_REMAINING)
+   
 
     try:
-        mistune.html(fd)
+        mistune.html(file_data)
 
     except (NotImplementedError, AttributeError, DeprecationWarning):
         pass
