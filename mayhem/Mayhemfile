@@ -1,0 +1,8 @@
+project: mistune
+target: html-fuzz
+testsuite:
+    - file://mayhem/testsuite
+
+cmds:
+  - cmd: /src/mayhem/fuzz_html.py
+    libfuzzer: true
